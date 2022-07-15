@@ -1,4 +1,4 @@
-<%@page import="cafe.CafeDAO"%>
+<%@page import="cafe.QADAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,13 +9,13 @@
 </head>
 <body>
 <% request.setCharacterEncoding("UTF-8");
-		CafeDAO dao = new CafeDAO();
+		QADAO dao = new QADAO();
 		dao.insert(
+				request.getParameter("name"),
 				request.getParameter("title"),
-				request.getParameter("id"),
 				request.getParameter("content")
 				);
-		response.sendRedirect("cafeMain.jsp");
+		response.sendRedirect("cafe_Q&A.jsp");
 	%>
 </body>
 </html>

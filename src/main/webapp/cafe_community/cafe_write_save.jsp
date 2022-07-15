@@ -8,10 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+<% request.setCharacterEncoding("UTF-8");
 		CafeDAO dao = new CafeDAO();
-		dao.delete(request.getParameter("id"));
-		response.sendRedirect("cafeMain.jsp");
+		dao.insert(
+				request.getParameter("title"),
+				request.getParameter("id"),
+				request.getParameter("content")
+				);
+		response.sendRedirect("cafe_community.jsp");
 	%>
 </body>
 </html>

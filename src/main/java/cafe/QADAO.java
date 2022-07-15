@@ -7,44 +7,41 @@ import java.util.ArrayList;
 
 import DBPKG.DBConnect;
 
-public class CafeDAO {
+public class QADAO {
 	Connection con;
 	PreparedStatement ps;
 	ResultSet rs;
-	public CafeDAO() {
+	public QADAO() {
 		try {
 			con = DBConnect.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	//메인페이지 구현
-	public ArrayList<CafeDTO> list(int start, int end){
+	public ArrayList<QADTO> list(int start, int end){
 		System.out.println("start : "+start);
 		System.out.println("end : "+end);
 		if(start == 0) {
 			start=1;
 		}
-		ArrayList<CafeDTO> li = new ArrayList<CafeDTO>();
-		String sql = "select B.* from(select rownum rn, A.* from (select * from cafe order by num desc)A)B where rn between ? and ?";
+		String sql = "select B.* from(select rownum rn, A.* from (select * from cafeqa order by id asc)A)B where rn between ? and ?";
+		ArrayList<QADTO> li = new ArrayList<QADTO>();
 		try {
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, start);
 			ps.setInt(2, end);
-			
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				li.add(getList());
+				li.add(getBoard());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return li;
 	}
-	//메인페이지 작성글 가져오기
-	private CafeDTO getList(){
-		CafeDTO dto = new CafeDTO();
+	private QADTO getBoard() {
+		QADTO dto = new QADTO();
 		try {
 			dto.setNum(rs.getInt("num"));
 			dto.setTitle(rs.getString("title"));
@@ -52,61 +49,69 @@ public class CafeDAO {
 			dto.setContent(rs.getString("content"));
 			dto.setSavedate(rs.getTimestamp("savedate"));
 			dto.setHit(rs.getInt("hit"));
+			dto.setIdgroup(rs.getInt("idgroup"));
+			dto.setStep(rs.getInt("step"));
+			dto.setIndent(rs.getInt("indent"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return dto;
 	}
-	//글 작성 메소드
-	public void insert(String id, String title,
-			String content) {
-		String sql = "insert into cafe(num,title,id,content)"
-				+ "values(cafe_seq.nextval,?,?,?)";
+	public void insert(String id, String title, String content) {
+		String sql = "insert into cafeqa(num,id,title,content,idgroup,step,indent)"+
+				"values(cafeqa_seq.nextval,?,?,?,cafeqa_seq.currval,0,0)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, title);
 			ps.setString(3, content);
 			ps.executeUpdate();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	//조회수 증가 메소드
-	public void upHit(String title) {
-		String sql="update cafe set hit=hit+1 where title=?";
+	private void upHit(String id) {
+		String sql="update cafeqa set hit=hit+1 where id=?";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, title);
+			ps.setString(1, id);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}	
 	}
-	//작성글 내용 보기
-	public CafeDTO getContent(String title) {
-		upHit(title);
+	public QADTO getContent(String id) {
+		upHit(id);
 		
-		System.out.println(title);
-		String sql = "select * from cafe where title=?";
-		CafeDTO dto = new CafeDTO();
-		
+		String sql = "select * from cafeqa where id=?";
+		QADTO dto = new QADTO();
 		try {
-			ps =con.prepareStatement(sql);
-			ps.setString(1, title);
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				return getList();
+				return getBoard();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	//삭제 메소드
+	public void update(QADTO dto) {
+		String sql = "update cafeqa set title=?, content=? where id=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getTitle());
+			ps.setString(2, dto.getContent());
+			ps.setString(3, dto.getId());
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void delete(String id) {
-		String sql = "delete from cafe where id=?";
+		String sql = "delete from cafeqa where id=?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
@@ -115,27 +120,41 @@ public class CafeDAO {
 			e.printStackTrace();
 		}
 	}
-	//수정 메소드
-	public void modify(CafeDTO dto) {
-		String sql = "update cafe set title=?, content=? where id=?";
+	public void replyShap(QADTO dto) {
+		String sql ="update cafeqa set step=step+1 where idgroup=? and step > ?";
 		try {
-			ps =con.prepareStatement(sql);
-			ps.setString(1, dto.getTitle());
-			ps.setString(2, dto.getContent());
-			ps.setString(3, dto.getId());
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, dto.getIdgroup());
+			ps.setInt(2, dto.getStep());
 			
 			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void reply(QADTO dto) {
+		replyShap(dto);
+		
+		String sql = 
+"insert into cafeqa(num,id,title,content,idgroup,step,indent)"
+	+"values(cafeqa_seq.nextval, ?, ?, ?, ?, ?, ?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getTitle());
+			ps.setString(3, dto.getContent());
 			
-			System.out.println(dto.getTitle());
-			System.out.println(dto.getContent());
-			System.out.println(dto.getId());
+			ps.setInt(4, dto.getIdgroup());
+			ps.setInt(5, dto.getStep() +1 );
+			ps.setInt(6, dto.getIndent() +1 );
 			
+			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	public int getTotalPage() {
-		String sql ="select count(*) from cafe";
+		String sql ="select count(*) from cafeqa";
 		int cnt = 0;
 		try {
 			ps = con.prepareStatement(sql);
@@ -165,6 +184,11 @@ public class CafeDAO {
 		return pc;
 	}
 }
+
+
+
+
+
 
 
 
