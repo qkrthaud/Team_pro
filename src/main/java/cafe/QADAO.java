@@ -24,7 +24,7 @@ public class QADAO {
 		if(start == 0) {
 			start=1;
 		}
-		String sql = "select B.* from(select rownum rn, A.* from (select * from cafeqa order by id asc)A)B where rn between ? and ?";
+		String sql = "select B.* from(select rownum rn, A.* from (select * from cafeqa order by idgroup desc, step asc)A)B where rn between ? and ?";
 		ArrayList<QADTO> li = new ArrayList<QADTO>();
 		try {
 			ps = con.prepareStatement(sql);

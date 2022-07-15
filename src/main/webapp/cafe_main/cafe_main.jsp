@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .div{text-align:center;}
-.img{width: 60%; height: 300px;}
+.img{width: 60%; height: 400px;}
 </style>
 </head>
 <body>
@@ -16,6 +16,7 @@
 	<section class="div">
 		<img class="img" src="../resource/img.jpg">
 	</section>
+	<h1 style="text-align:center">java 프로그래밍 카페입니다.</h1>
 	<br>
 <%@ include file="cafe_footer.jsp" %>
 </body>

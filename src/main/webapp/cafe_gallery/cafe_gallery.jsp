@@ -29,10 +29,10 @@
 			<td><img src="../resource/img.jpg" width="200px" height="200px"></td>
 		</tr>
 		<tr>
-			<td style="border:none;">
+			<th style="border:none;">
 				<input type="submit" value="이미지 업로드">
 				<input type="submit" value="이미지 삭제">
-			</td>
+			</th>
 		</tr>
 </table>
 

@@ -7,8 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.section{width :100%; height: 500px; 
-		background-color: #AD9AEE; padding:10px;
+.section{disply:flex;
 		}
 .table{
 		table-layout:fixed;
@@ -22,6 +21,7 @@
 <body>
 <jsp:useBean id="dao" class="cafe.QADAO" />
 <%@ include file="../cafe_main/cafe_header.jsp" %>
+<div class="section">
 <h1 style="text-align: center;">Q&A 게시판</h1>
 <form action="qa_write_view.jsp" method="post">
 
@@ -109,6 +109,7 @@
 		</tr>
 </table>
 </form>
+</div>
 <%@ include file="../cafe_main/cafe_footer.jsp" %>
 </body>
 </html>

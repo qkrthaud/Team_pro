@@ -8,7 +8,7 @@
 <style type="text/css">
 .header{width: 100%; height: 100px;
 		background-color: white; text-align: center;}
-nav { background-color: #6495ED; margin: auto;}
+nav { background-color: #6495ED; margin: auto; width:100%;}
 	nav ul {display:flex; justify-content: flex-start;
 			list-style: none;}
 	nav ul li { padding: 10px; margin: 0 3px;}
