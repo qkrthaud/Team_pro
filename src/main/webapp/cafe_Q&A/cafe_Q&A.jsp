@@ -38,14 +38,12 @@
 		<th style="width:50px;">아이디</th>
 		<th style="width:200px;">날짜</th>
 		<th style="width:50px;">조회수</th>
-		<th>groupId</th>
-		<th>step</th>
-		<th>indent</th>
+		
 	</tr>
 	<c:choose>
 		<c:when test="${list.size() == 0 }">
 		<tr>
-			<th colspan="8">데이터없음</th>
+			<th colspan="4">데이터없음</th>
 		</tr>
 		</c:when>
 		<c:otherwise>
@@ -59,15 +57,13 @@
 			<td>${dto.id }</td>
 			<td>${dto.savedate }</td>
 			<td>${dto.hit }</td>
-			<td>${dto.idgroup }</td>
-			<td>${dto.step }</td>
-			<td>${dto.indent }</td>
+			
 		</tr>
 	</c:forEach>
 	</c:otherwise>
 	</c:choose>
 		<tr>
-			<th colspan="8">
+			<th colspan="5">
 <c:choose>
 	<c:when test="${param.start == null }">
 		<c:set var="s" value="1" />

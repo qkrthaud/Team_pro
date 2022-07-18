@@ -14,7 +14,7 @@
 <%@ include file="cafe_header.jsp" %>
 	<br>
 	<section class="div">
-		<img class="img" src="../resource/img.jpg">
+		<img class="img" src="../resource/images/cafe_main_banner.jpg">
 	</section>
 	<h1 style="text-align:center">java 프로그래밍 카페입니다.</h1>
 	<br>
