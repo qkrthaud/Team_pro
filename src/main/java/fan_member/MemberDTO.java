@@ -1,4 +1,4 @@
-package member;
+package fan_member;
 
 public class MemberDTO {
 	private String id,name,pwd,addr,tel;

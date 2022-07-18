@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:useBean id="fdao" class="fan.FanDAO"/>
+<% fdao.delete(request.getParameter("no")); %>
+<script type="text/javascript">
+alert('삭제되었습니다')
+location.href="fan_fan.jsp"
+</script>
 </body>
 </html>

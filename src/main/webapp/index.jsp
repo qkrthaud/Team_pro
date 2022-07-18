@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
 
-<input type="text">
-<input type="text">
 </body>
 </html>
