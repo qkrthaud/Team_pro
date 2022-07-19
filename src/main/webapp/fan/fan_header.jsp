@@ -70,10 +70,10 @@ padding-bottom: 50px;
 <th>
 <div class="lb-wrap">
   <div class="lb-text">
-    <h2>종민</h2>
+    <h2>Blog</h2>
   </div>
   <div class="lb-image">
-   <a href=""> <img id="main" class="img" src="pngwing.com.png"></a>
+   <a href="../blog/blogForm.jsp"> <img id="main" class="img" src="pngwing.com.png"></a>
   </div>
 </div>
 </th>
@@ -87,16 +87,7 @@ padding-bottom: 50px;
   </div>
 </div>
 </th>
-<th>
-<div class="lb-wrap">
-  <div class="lb-text">
-    <h2>Mail</h2>
-  </div>
-  <div class="lb-image">
-   <a href=""> <img id="main" class="img" src="pngwing.com.png"></a>
-  </div>
-</div>
-</th>
+
 <th>
 <div class="lb-wrap">
   <div class="lb-text">

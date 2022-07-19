@@ -28,7 +28,7 @@
 <div class="hi">
 cafe 클릭시 cafe_main으로 이동<br>
 cafe 홈으로 클릭시 fan_main 이동<br>
-<br>
+blog 연동<br>
 <br>
 <br>
 </div>
