@@ -3,7 +3,7 @@ package member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -11,24 +11,6 @@ import DBPKG.DBConnect;
 import fan.FanDTO;
 
 
-public class MemberDAO {
-	Connection con;
-	PreparedStatement ps;
-	ResultSet rs;
-	public MemberDAO() {
-		try {
-			con=DBConnect.getConnection();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-=======
-import java.util.ArrayList;
->>>>>>> 452a6e70c7d6b1e34ec2b1702615106d72343dd6
-
-import DBPKG.DBConnect;
 import blogmember.BlogDTO;
 
 public class MemberDAO {
