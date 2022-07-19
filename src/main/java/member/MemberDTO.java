@@ -1,8 +1,13 @@
 package member;
 
 public class MemberDTO {
+<<<<<<< HEAD
 	private String id,name,pwd,addr,tel;
 	private int num;
+=======
+	String id, name, pwd, addr, tel;
+	int num;
+>>>>>>> 452a6e70c7d6b1e34ec2b1702615106d72343dd6
 	public String getId() {
 		return id;
 	}
@@ -40,4 +45,5 @@ public class MemberDTO {
 		this.num = num;
 	}
 
+	
 }
