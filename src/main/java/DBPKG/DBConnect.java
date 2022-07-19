@@ -8,8 +8,8 @@ public class DBConnect {
 		Class.forName("oracle.jdbc.OracleDriver");
 		Connection con = 
 				DriverManager.getConnection(
-			"jdbc:oracle:thin:@//localhost:1521/xe",
-									"java2","1234");
+			"jdbc:oracle:thin:@//192.168.7.14:1521/xe",
+									"team3","1234");
 		return con;
 	}
 }

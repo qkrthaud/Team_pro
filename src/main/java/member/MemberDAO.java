@@ -36,12 +36,16 @@ public class MemberDAO {
 		return null;
 	}
 	public MemberDTO loginChk(MemberDTO dto) {
-		String sql = "select * from member_team where id = "+dto.getId()+" and pwd = "+dto.getPwd();
+		String sql = "select * from member_team where id = ? and pwd = ?";
 		
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getPwd());
 			rs = ps.executeQuery();
-			dto = makeDTO(rs);
+			if(rs.next()) {
+				dto = makeDTO(rs);				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,6 +63,8 @@ public class MemberDAO {
 				dto.setNum(rs.getInt("num"));
 				dto.setPwd(rs.getString("pwd"));
 				dto.setTel(rs.getString("tel"));
+				System.out.println(rs.getString("id"));
+				System.out.println("없음");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

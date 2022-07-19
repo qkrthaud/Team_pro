@@ -18,7 +18,11 @@
 	String blogMsg = "";
 	boolean check = false;
 	if(dto != null){
+		System.out.println("로그인성공함");
 		session.setAttribute("login", dto);
+		out.println("<script type='text/javascript'>");
+		out.println("console.log('로그인 성공')");
+		out.println("</script>");
 		blogMsg = dto.getName();
 	}else{
 
