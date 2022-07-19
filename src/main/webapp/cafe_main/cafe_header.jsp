@@ -24,7 +24,7 @@ nav { background-color: #6495ED; margin: auto; width:100%;}
 			<li><a href="../cafe_community/cafe_community.jsp">자유 게시판</a></li>
 			<li><a href="../cafe_gallery/cafe_gallery.jsp">갤러리</a></li>
 			<li><a href="../cafe_Q&A/cafe_Q&A.jsp">Q&A</a></li>
-			<li><a href="*">홈으로</a></li><!--메인 페이지 -->
+			<li><a href="../fan/fan_main.jsp">홈으로</a></li><!--메인 페이지 -->
 		</ul>
 	</nav>
 </header>

@@ -27,7 +27,7 @@
 	
 <div class="hi">
 cafe 클릭시 cafe_main으로 이동<br>
-<br>
+cafe 홈으로 클릭시 fan_main 이동<br>
 <br>
 <br>
 <br>
