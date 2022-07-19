@@ -83,7 +83,7 @@ padding-bottom: 50px;
     <h2>Cafe</h2>
   </div>
   <div class="lb-image">
-   <a href=""> <img id="main" class="img" src="pngwing.com.png"></a>
+   <a href="../cafe_main/cafe_main.jsp"> <img id="main" class="img" src="pngwing.com.png"></a>
   </div>
 </div>
 </th>

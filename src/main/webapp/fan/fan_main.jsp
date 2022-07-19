@@ -26,7 +26,7 @@
 	%> --%>
 	
 <div class="hi">
-<br>
+cafe 클릭시 cafe_main으로 이동<br>
 <br>
 <br>
 <br>
